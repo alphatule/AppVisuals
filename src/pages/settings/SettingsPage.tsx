@@ -11,6 +11,7 @@ import {
   IonIcon,
   IonButton,
 } from "@ionic/react"
+import { useHistory } from 'react-router-dom';
 import {
   notificationsOutline,
   moonOutline,
@@ -25,6 +26,13 @@ import {
 import styles from "./SettingsPage.module.css"
 
 const SettingsPage: React.FC = () => {
+  const history = useHistory();
+
+  const handleBlockedContacts = () => {
+    history.push(`/settings/blockedcontacts`);
+  };
+
+
   return (
     <IonPage className={styles.page}>
       <IonHeader className="ion-no-border">
@@ -35,8 +43,6 @@ const SettingsPage: React.FC = () => {
           </div>
         </IonToolbar>
       </IonHeader>
-
-      <div className={styles.separator}></div>
 
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>Settings</h2>
@@ -52,7 +58,7 @@ const SettingsPage: React.FC = () => {
           </IonItem>
 
           {/* Dark Mode */}
-          <IonItem button className={styles.settingsItem}>
+          <IonItem button onClick={handleBlockedContacts} className={styles.settingsItem}>
             <IonIcon icon={watchOutline} slot="start" className={styles.itemIcon} />
             <p className={styles.itemLabel}>Blocked contact list</p>
             {/* <IonToggle slot="end" className={styles.toggle} /> */}
