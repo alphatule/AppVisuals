@@ -29,9 +29,11 @@ import AddContactPage from './pages/contactos/AddOrEditContact';
 
 // CHATS
 import ChatList from './pages/chats/ChatList';
+import ChatContact from './pages/chats/ChatContact';
 
 // EVENTOS
 import EventosMain from './pages/events/EventosMain';
+import EventosAdd from './pages/events/EventosAdd';
 
 // HISTORIAL
 import HistoryPage from './pages/history/HistoryPage';
@@ -82,7 +84,7 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const history = useHistory();
   const router = useIonRouter();
@@ -93,7 +95,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => setShowSplash(false), 100);
+    setTimeout(() => setShowSplash(false), 3000);
   }, []);
 
   return (
@@ -120,6 +122,7 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
     "/contactos/perfil/:id",
     "/settings/blockedcontacts",
     "/settings/changepassword",
+    "/chats/chatcontact"
   ];
 
   const shouldHideTabBar = hiddenTabBarRoutes.some((route) =>
@@ -151,6 +154,9 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
         <Route exact path="/chats">
           <ChatList />
         </Route>
+        <Route exact path="/chats/chatcontact">
+          <ChatContact />
+        </Route>
         <Route exact path="/chats/agregar">
           <ChatList />
         </Route>
@@ -164,6 +170,9 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
         {/* Eventos */}
         <Route path="/eventos">
           <EventosMain />
+        </Route>
+        <Route path="/eventos/add">
+          <EventosAdd />
         </Route>
 
         {/* History */}
