@@ -39,6 +39,13 @@ import BlockedContactsPage from './pages/settings/BlockedContactsPage';
 import SettingsHelpPage from './pages/settings/SettingsHelpPage';
 import ChangePasswordPage from './pages/settings/ChangePasswordPage';
 
+// Librerias
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Keyboard, Mousewheel } from "swiper/modules";
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -122,16 +129,6 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
     </Route>
   ) : (
     <IonTabs>
-      {/* <IonHeader className="ion-no-border">
-        <IonToolbar color="primary" className="headerToolbar">
-          <div className="logoContainer">
-            <h1>V-LINK</h1>
-            <img src="/imgs/LogoTopBar.png" alt="V-Link Logo" className="topbarLogo" />
-          </div>
-        </IonToolbar>
-      </IonHeader> */}
-
-
       <IonRouterOutlet>
         {/* Contactos */}
         <Route exact path="/contactos">
@@ -189,6 +186,27 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
         <Route exact path="/">
           <Redirect to="/contactos" />
         </Route>
+
+        <Swiper
+          modules={[Keyboard, Mousewheel]}
+          spaceBetween={50}
+          slidesPerView={1}
+          keyboard={{ enabled: true }}
+          mousewheel={{ forceToAxis: true }}
+        >
+          <SwiperSlide>
+            <ContactsPage />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ChatList />
+          </SwiperSlide>
+          <SwiperSlide>
+            <HistoryPage />
+          </SwiperSlide>
+          <SwiperSlide>
+            <SettingsPage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+          </SwiperSlide>
+        </Swiper>
       </IonRouterOutlet>
 
       {/* Solo muestra la barra si no está en una ruta oculta */}
