@@ -32,6 +32,10 @@ const SettingsPage: React.FC = () => {
     history.push(`/settings/blockedcontacts`);
   };
 
+  const handleHelp = () => {
+    history.push(`/settings/help`);
+  };
+
 
   return (
     <IonPage className={styles.page}>
@@ -65,7 +69,7 @@ const SettingsPage: React.FC = () => {
           </IonItem>
 
           {/* Help */}
-          <IonItem button className={styles.settingsItem}>
+          <IonItem button onClick={handleHelp} className={styles.settingsItem}>
             <IonIcon icon={helpCircleOutline} slot="start" className={styles.itemIcon} />
             <p className={styles.itemLabel}>Help system</p>
           </IonItem>
