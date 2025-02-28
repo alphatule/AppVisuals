@@ -162,7 +162,7 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
         </Route>
 
         {/* Eventos */}
-        <Route path="/tab3">
+        <Route path="/eventos">
 
         </Route>
 
@@ -202,9 +202,9 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
             <IonLabel>Chats</IonLabel>
             <IonIcon aria-hidden="true" src={location.pathname.startsWith("/chats") ? "/tab/icons/chat-sel.svg" : "/tab/icons/chat.svg"} />
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="eventos" href="/eventos">
             <IonLabel>Events</IonLabel>
-            <IonIcon aria-hidden="true" src={location.pathname.startsWith("/tab3") ? "/tab/icons/calendar-sel.svg" : "/tab/icons/calendar.svg"} />
+            <IonIcon aria-hidden="true" src={location.pathname.startsWith("/eventos") ? "/tab/icons/calendar-sel.svg" : "/tab/icons/calendar.svg"} />
           </IonTabButton>
           <IonTabButton tab="historial" href="/historial">
             <IonLabel>History</IonLabel>
