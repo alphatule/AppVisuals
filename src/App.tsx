@@ -30,6 +30,9 @@ import AddContactPage from './pages/contactos/AddOrEditContact';
 // CHATS
 import ChatList from './pages/chats/ChatList';
 
+// EVENTOS
+import EventosMain from './pages/events/EventosMain';
+
 // HISTORIAL
 import HistoryPage from './pages/history/HistoryPage';
 
@@ -160,7 +163,7 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
 
         {/* Eventos */}
         <Route path="/eventos">
-
+          <EventosMain />
         </Route>
 
         {/* History */}
