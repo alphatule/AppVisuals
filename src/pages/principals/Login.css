@@ -1,0 +1,117 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  background: #1F52B5;
+  padding: 20px;
+  font-family: 'Jersey25', sans-serif;
+  /* font-family: Jersey 25; */
+
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  font-size: 40px;
+  width: 207px;
+  height: 96px;
+  box-sizing: border-box;
+}
+
+.login-box {
+  background: #4c75c4;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.oauth-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.cfx-button {
+  --background: #291B26;
+  --border-radius: 0px; /* Elimina el borde redondeado globalmente */
+  border: 1px solid #F40552;
+  width: 50%;
+  flex: 1;
+  box-shadow: 4px 4px 8px rgba(244, 5, 82, 0.4);
+  transition: background-color 0.1 ease;
+}
+
+.cfx-button:hover {
+  --background: #F40552;
+  color: white;
+}
+
+.discord-button {
+  --background: #8096e9;
+  border-radius: 8px;
+  flex: 1;
+  /* --background: url('./public/discord-logo.png') no-repeat; */
+  
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: white;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.custom-input {
+  --background: rgba(255, 255, 255, 0.1);
+  --color: white;
+  --placeholder-color: rgba(255, 255, 255, 0.5);
+  --padding-start: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.login-button {
+  --background: white;
+  --color: #2962ff;
+  margin-top: 20px;
+  --box-shadow: none;
+  
+  /* font-family: 'Jersey25', sans-serif; */
+}
+
+.create-account {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  font-size: 14px;
+}
