@@ -36,6 +36,7 @@ import HistoryPage from './pages/history/HistoryPage';
 // SETTINGS
 import SettingsPage from './pages/settings/SettingsPage';
 import BlockedContactsPage from './pages/settings/BlockedContactsPage';
+import SettingsHelpPage from './pages/settings/SettingsHelpPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -76,7 +77,7 @@ const App: React.FC = () => {
   const router = useIonRouter();
 
   const handleLogin = () => {
-    console.log('handleLogin he llegado', true);
+    // console.log('handleLogin he llegado', true);
     setIsAuthenticated(true);
   };
 
@@ -90,14 +91,14 @@ const App: React.FC = () => {
         <SplashScreen />
       ) : (
         <IonReactRouter>
-          <MainApp isAuthenticated={isAuthenticated} onLogin={handleLogin} />
+          <MainApp isAuthenticated={isAuthenticated} onLogin={handleLogin} setIsAuthenticated={setIsAuthenticated} />
         </IonReactRouter>
       )}
     </IonApp>
   );
 };
 
-const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void }> = ({ isAuthenticated, onLogin }) => {
+const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>> }> = ({ isAuthenticated, onLogin, setIsAuthenticated }) => {
   const location = useLocation();
 
   // Definir rutas donde NO se debe mostrar la barra de navegación
@@ -164,13 +165,13 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void }> = ({ 
 
         {/* Settings */}
         <Route path="/settings">
-          <SettingsPage />
+          <SettingsPage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
         </Route>
         <Route path="/settings/blockedcontacts">
           <BlockedContactsPage />
         </Route>
         <Route path="/settings/help">
-          <BlockedContactsPage />
+          <SettingsHelpPage />
         </Route>
 
         {/* DEFAULT */}

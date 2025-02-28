@@ -25,7 +25,12 @@ import {
 } from "ionicons/icons"
 import styles from "./SettingsPage.module.css"
 
-const SettingsPage: React.FC = () => {
+interface SettingsPageProps {
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+const SettingsPage: React.FC<SettingsPageProps> = ({isAuthenticated, setIsAuthenticated}) => {
   const history = useHistory();
 
   const handleBlockedContacts = () => {
@@ -36,6 +41,10 @@ const SettingsPage: React.FC = () => {
     history.push(`/settings/help`);
   };
 
+  const handleExit = () => {
+    setIsAuthenticated(false);
+    history.push(`/`);
+  };
 
   return (
     <IonPage className={styles.page}>
@@ -80,24 +89,9 @@ const SettingsPage: React.FC = () => {
             <p className={styles.itemLabel}>Change password</p>
           </IonItem>
 
-
-          {/* Theme */}
-          {/* <IonItem button className={styles.settingsItem}>
-            <IonIcon icon={colorPaletteOutline} slot="start" className={styles.itemIcon} />
-            <IonLabel>Theme</IonLabel>
-            <div className={styles.valueLabel}>Default</div>
-          </IonItem> */}
-
-
-          {/* About */}
-          {/* <IonItem button className={styles.settingsItem}>
-            <IonIcon icon={informationCircleOutline} slot="start" className={styles.itemIcon} />
-            <IonLabel>About</IonLabel>
-          </IonItem> */}
-
           {/* Logout Button */}
           <div className={styles.logoutContainer}>
-            <IonButton expand="block" color="danger" className={styles.logoutButton} fill="clear">
+            <IonButton onClick={handleExit} expand="block" color="danger" className={styles.logoutButton} fill="clear">
               <IonIcon icon={logOutOutline} slot="start" />
               Logout
             </IonButton>
