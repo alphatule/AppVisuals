@@ -30,7 +30,7 @@ interface SettingsPageProps {
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
-const SettingsPage: React.FC<SettingsPageProps> = ({isAuthenticated, setIsAuthenticated}) => {
+const SettingsPage: React.FC<SettingsPageProps> = ({ isAuthenticated, setIsAuthenticated }) => {
   const history = useHistory();
 
   const handleBlockedContacts = () => {
@@ -44,6 +44,11 @@ const SettingsPage: React.FC<SettingsPageProps> = ({isAuthenticated, setIsAuthen
   const handleExit = () => {
     setIsAuthenticated(false);
     history.push(`/`);
+  };
+
+  const handleChangePassword = () => {
+    setIsAuthenticated(false);
+    history.push(`/settings/changepassword`);
   };
 
   return (
@@ -84,7 +89,7 @@ const SettingsPage: React.FC<SettingsPageProps> = ({isAuthenticated, setIsAuthen
           </IonItem>
 
           {/* Privacy */}
-          <IonItem button className={styles.settingsItem}>
+          <IonItem button onClick={handleChangePassword} className={styles.settingsItem}>
             <IonIcon icon={lockClosedOutline} slot="start" className={styles.itemIcon} />
             <p className={styles.itemLabel}>Change password</p>
           </IonItem>

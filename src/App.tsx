@@ -37,6 +37,7 @@ import HistoryPage from './pages/history/HistoryPage';
 import SettingsPage from './pages/settings/SettingsPage';
 import BlockedContactsPage from './pages/settings/BlockedContactsPage';
 import SettingsHelpPage from './pages/settings/SettingsHelpPage';
+import ChangePasswordPage from './pages/settings/ChangePasswordPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -102,7 +103,14 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
   const location = useLocation();
 
   // Definir rutas donde NO se debe mostrar la barra de navegación
-  const hiddenTabBarRoutes = ["/", "/login", "/contactos/agregar", "/contactos/perfil/:id", "/settings/blockedcontacts"];
+  const hiddenTabBarRoutes = [
+    "/",
+    "/login",
+    "/contactos/agregar",
+    "/contactos/perfil/:id",
+    "/settings/blockedcontacts",
+    "/settings/changepassword",
+  ];
 
   const shouldHideTabBar = hiddenTabBarRoutes.some((route) =>
     new RegExp(`^${route.replace(/:[^\s/]+/g, ".*")}$`).test(location.pathname)
@@ -172,6 +180,9 @@ const MainApp: React.FC<{ isAuthenticated: boolean; onLogin: () => void; setIsAu
         </Route>
         <Route path="/settings/help">
           <SettingsHelpPage />
+        </Route>
+        <Route path="/settings/changepassword">
+          <ChangePasswordPage />
         </Route>
 
         {/* DEFAULT */}
